@@ -1,0 +1,1 @@
+export { HorizontalTable } from './ui/HorizontalTable'
