@@ -7,6 +7,11 @@ export const MainPage = () => {
         <li><Link to={`/base`}>Base</Link></li>
         <li><Link to={`/combined-columns`}>Объединенные столбцы и строки</Link></li>
         <li><Link to={`/horizontal-table`}>Горизонтальная таблица</Link></li>
+        <li><Link to={`/edit-on-chage`}>Edit on chage</Link></li>
+        <li><Link to={`/edit-on-blur`}>Edit on blur</Link></li>
+        <li><Link to={`/mapped-table`}>Mapped Table</Link></li>
+        <li><Link to={`/mobx`}>Mobx Data</Link></li>
+        <li><Link to={`/react-hook-form`}>React hook form</Link></li>
       </ul>
     </>
   )
