@@ -13,6 +13,7 @@ import { EditOnBlur } from './pages/EditOnBlur/ui/EditOnBlur.tsx';
 import { MappedData } from './pages/MappedData/index.ts';
 import MobxData from './pages/MobxData/ui/MobxData.tsx';
 import { ReactHookForm } from './pages/ReactHookForm/ui/ReactHookForm.tsx';
+import { FullValidation } from './pages/FullValidation/ui/FullValidation.tsx';
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
   {
     path: "/react-hook-form",
     element: <ReactHookForm />,
+  },
+  {
+    path: "/full-validation",
+    element: <FullValidation />,
   },
 ]);
 

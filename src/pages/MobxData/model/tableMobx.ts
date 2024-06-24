@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx"
 import { Hobby, RowDataWithId, Town } from "../../../shared/types/tableTypes";
-import { tableData } from "../../../shared/const/tableData";
+import { getDefaultRow, tableData } from "../../../shared/const/tableData";
 import { v1 } from "uuid";
 
 class TableStore {
@@ -10,8 +10,8 @@ class TableStore {
     makeAutoObservable(this);
   }
 
-  addRow(row: RowDataWithId, index: number) {
-    this.rows.splice(index + 1, 0, row);
+  addRow(index: number) {
+    this.rows.splice(index + 1, 0, getDefaultRow());
   }
 
   deleteRow(id: string) {

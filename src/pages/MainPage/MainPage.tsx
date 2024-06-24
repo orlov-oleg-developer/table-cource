@@ -12,6 +12,7 @@ export const MainPage = () => {
         <li><Link to={`/mapped-table`}>Mapped Table</Link></li>
         <li><Link to={`/mobx`}>Mobx Data</Link></li>
         <li><Link to={`/react-hook-form`}>React hook form</Link></li>
+        <li><Link to={`/full-validation`}>Full validation</Link></li>
       </ul>
     </>
   )

@@ -2,11 +2,13 @@ import React, { ChangeEvent, InputHTMLAttributes, useCallback, useEffect, useSta
 
 interface StringInput extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value'> {
   value: string;
+  error?: string;
 }
 
 export const StringInput = memo(({
   value,
   onBlur,
+  error,
 }: StringInput) => {
   const [text, setText] = useState<string>(value)
 
@@ -21,6 +23,8 @@ export const StringInput = memo(({
 
   return (
     <input
+      style={{backgroundColor: !!error ? 'pink' : 'white'}}
+      title={error ?? ''}
       value={text}
       type='string'
       onChange={onChange}

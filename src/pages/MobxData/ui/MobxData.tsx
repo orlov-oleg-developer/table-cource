@@ -15,10 +15,7 @@ const TableComponent: React.FC = () => {
   }, [])
 
   const onAddRow = useCallback((index: number) => {
-    tableData.addRow(
-      getDefaultRow(),
-      index
-    );
+    tableData.addRow(index);
   }, [])
 
   const onDeleteRow = useCallback((id: string) => {
