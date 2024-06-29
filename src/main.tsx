@@ -14,6 +14,7 @@ import { MappedData } from './pages/MappedData/index.ts';
 import MobxData from './pages/MobxData/ui/MobxData.tsx';
 import { ReactHookForm } from './pages/ReactHookForm/ui/ReactHookForm.tsx';
 import { FullValidation } from './pages/FullValidation/ui/FullValidation.tsx';
+import { ObjectValidation } from './pages/ObjectValidation/ui/ObjectValidation.tsx';
 
 export const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ export const router = createBrowserRouter([
   {
     path: "/full-validation",
     element: <FullValidation />,
+  },
+  {
+    path: "/object-validation",
+    element: <ObjectValidation />,
   },
 ]);
 

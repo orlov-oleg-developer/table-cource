@@ -3,7 +3,6 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { RowDataWithId } from '../../../../shared/types/tableTypes';
 import { getDefaultRow, tableData } from '../../../../shared/const/tableData';
 import { v1 } from 'uuid';
-import { action } from 'mobx';
 
 export type FullValidationSchemeSchema = {
   table: RowDataWithId[] | null;
@@ -44,11 +43,18 @@ const fullValidationSlice = createSlice({
     },
     addRow: (state, action: PayloadAction<number>) => {
       const index = action.payload;
-      if (state.table) state.table.splice(index + 1, 0, getDefaultRow());
+      if (state.table) {
+        const row = getDefaultRow();
+        state.table.splice(index + 1, 0, row)
+        state.errors[`${row.id}_age`] = 'Возраст должен быть выше 18 лет'
+      }
     },
     deleteRow: (state, action: PayloadAction<string>) => {
       const id = action.payload;
-      if (state.table) state.table = state.table.filter((row) => row.id !== id);
+      if (state.table) {
+        state.table = state.table.filter((row) => row.id !== id)
+        if (state.errors[`${id}_age`]) delete state.errors[`${id}_age`]
+      }
     },
   }
 })

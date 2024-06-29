@@ -8,10 +8,6 @@ export type RowData = {
   hobby: Hobby;
 }
 
-export type RowDataWithId = {
-  name: string;
-  age: number;
-  town: Town;
-  hobby: Hobby;
+export type RowDataWithId = RowData & {
   id: string;
 }

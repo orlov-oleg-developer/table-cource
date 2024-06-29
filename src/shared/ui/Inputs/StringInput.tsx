@@ -23,7 +23,7 @@ export const StringInput = memo(({
 
   return (
     <input
-      style={{backgroundColor: !!error ? 'pink' : 'white'}}
+      style={{ backgroundColor: error ? 'pink' : 'white' }}
       title={error ?? ''}
       value={text}
       type='string'

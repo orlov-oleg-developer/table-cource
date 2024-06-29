@@ -1,13 +1,11 @@
 import React, { useCallback } from 'react';
 import { observer } from 'mobx-react';
-// import { RowDataWithId } from '../../../shared/types/tableTypes';
 import tableData from '../model/tableMobx'
 import { HStack } from '../../../shared/ui/Stack';
 import { StringInput } from '../../../shared/ui/Inputs/StringInput';
 import { NumberInput } from '../../../shared/ui/Inputs/NumberInput';
-import { getDefaultRow, hobbies, towns } from '../../../shared/const/tableData';
+import { hobbies, towns } from '../../../shared/const/tableData';
 import { RowData } from '../../../shared/types/tableTypes';
-import { v1 } from 'uuid';
 
 const TableComponent: React.FC = () => {
   const onChange = useCallback((args: { index: number, key: keyof RowData, value: unknown }) => {
