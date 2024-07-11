@@ -1,0 +1,36 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid rgb(140 140 140);
+
+  caption {
+    caption-side: bottom;
+  };
+
+  thead {
+    position: sticky;
+    top: -2px;
+    background-color: white;
+    color: rgb(22, 36, 47);
+  }
+
+  th, td {
+    border: 1px solid rgb(160 160 160);
+    padding: 8px 10px;
+  };
+}
+
+.tableContainer {
+  display: flex;
+  align-items: flex-start;
+  overflow-y: auto;
+  height: 205px;
+  position: relative;
+}

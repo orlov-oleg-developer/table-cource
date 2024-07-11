@@ -4,12 +4,14 @@ import { useDispatch } from 'react-redux';
 import { MappedTableSchema, mappedReducer } from '../pages/MappedData/model/slices/mappedSlice';
 import { FullValidationSchemeSchema, fullValidationReducer } from '../pages/FullValidation/model/slices/fullValidationSlice';
 import { ObjectValidationSchemeSchema, objectValidationReducer } from '../pages/ObjectValidation/model/slices/objectValidationSlice';
+import { virtualTableReducer, virtualTableSchemeSchema } from '../pages/VitrualTable/model/slices/virtualTableSlice';
 
 export type StateSchema = {
   defaultSliceReducer: TableSchema;
   mappedReducer: MappedTableSchema;
   fullValidationReducer: FullValidationSchemeSchema;
   objectValidationReducer: ObjectValidationSchemeSchema;
+  virtualTableReducer: virtualTableSchemeSchema;
 }
 
 export const store = configureStore({
@@ -17,7 +19,8 @@ export const store = configureStore({
     defaultSliceReducer,
     mappedReducer,
     fullValidationReducer,
-    objectValidationReducer
+    objectValidationReducer,
+    virtualTableReducer,
   }
 })
 

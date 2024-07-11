@@ -1,15 +1,15 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { tableData } from '../../../../shared/const/tableData';
 import { v1 } from 'uuid';
-import { Hobby, RowData, Town } from '../objectValidationType';
+import { Hobby, RowData, Town } from '../virtualTableType';
 import { getValidationObject } from '../utils/getValidationObject';
 import { getDefaultRow } from '../utils/getDefaultRow';
+import { tableData } from '../tableData';
 
-export type ObjectValidationSchemeSchema = {
+export type virtualTableSchemeSchema = {
   table: RowData[] | null;
 }
 
-const initialState: ObjectValidationSchemeSchema = {
+const initialState: virtualTableSchemeSchema = {
   table: tableData.map((data) => ({
     name: getValidationObject(data.name),
     age: getValidationObject(data.age),
@@ -19,8 +19,8 @@ const initialState: ObjectValidationSchemeSchema = {
   }))
 }
 
-const objectValidationSlice = createSlice({
-  name: 'objectValidation',
+const virtualTableSlice = createSlice({
+  name: 'virtualTable',
   initialState,
   reducers: {
     changeValue: (state, action: PayloadAction<{ index: number, key: keyof RowData, value: unknown }>) => {
@@ -63,4 +63,4 @@ const objectValidationSlice = createSlice({
   }
 })
 
-export const { reducer: objectValidationReducer, actions: objectValidationActions } = objectValidationSlice
+export const { reducer: virtualTableReducer, actions: virtualTableActions } = virtualTableSlice

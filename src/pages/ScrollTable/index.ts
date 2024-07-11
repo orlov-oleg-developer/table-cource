@@ -1,0 +1,1 @@
+export { ScrollTable } from './ui/ScrollTable'
