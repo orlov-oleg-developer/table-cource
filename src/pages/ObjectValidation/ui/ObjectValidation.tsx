@@ -5,7 +5,7 @@ import { hobbies, towns } from '../../../shared/const/tableData';
 import { useAppDispatch } from '../../../app/store';
 import { RowData } from '../../../shared/types/tableTypes';
 import { StringInput } from '../../../shared/ui/Inputs/StringInput';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { NumberInput } from '../../../shared/ui/Inputs/NumberInput';
 import { getTableData } from '../model/selectors/getTableData';
 import { objectValidationActions } from '../model/slices/objectValidationSlice';
@@ -18,10 +18,20 @@ export function ObjectValidation() {
     dispatch(objectValidationActions.changeValue(args))
   }, [dispatch])
 
+  const tableErrors = useMemo(() => {
+    return !!tableData.find((row) =>
+      row.age.status === 'Error'
+      || row.name.status === 'Error'
+      || row.town.status === 'Error'
+      || row.hobby.status === 'Error'
+    )
+  }, [tableData])
+
   return (
     <>
       <h1>Object Validation Table</h1>
 
+      {tableErrors && <p className='errorText'>В таблице присутствует ошибка</p>}
       <HStack justify='center'>
         <table className='table'>
           <thead>

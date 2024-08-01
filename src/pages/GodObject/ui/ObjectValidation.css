@@ -18,9 +18,3 @@
     padding: 8px 10px;
   };
 }
-
-.errorText {
-  text-align: left;
-  color: pink;
-  font-weight: 700;
-}

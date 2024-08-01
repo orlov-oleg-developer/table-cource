@@ -13,6 +13,7 @@ import { FullValidation } from "../../pages/FullValidation/ui/FullValidation";
 import { ObjectValidation } from "../../pages/ObjectValidation/ui/ObjectValidation";
 import { VirtualTable } from "../../pages/VitrualTable/ui/VirtualTable";
 import { ComponentValidation } from "../../pages/ComponentValidation/ui/ComponentValidation";
+import { GodObject } from "../../pages/GodObject/ui/GodObject";
 
 export enum AppRoutes {
     MAIN = 'main',
@@ -29,6 +30,7 @@ export enum AppRoutes {
     FULL_VALIDATION = 'fullValidation',
     Object_VALIDATION = 'objectValidation',
     VIRTUAL_TABLE = 'virtualTable',
+    GOD_TABLE = 'godTable',
     // last
     NOT_FOUND = 'not_found',
 }
@@ -48,6 +50,7 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.FULL_VALIDATION]: '/fullValidation',
     [AppRoutes.Object_VALIDATION]: '/objectValidation',
     [AppRoutes.VIRTUAL_TABLE]: '/virtualTable',
+    [AppRoutes.GOD_TABLE]: '/godTable',
     // last
     [AppRoutes.NOT_FOUND]: '*',
 };
@@ -122,6 +125,11 @@ export const routeConfig: Record<AppRoutes, RouteObject & { title: string }> = {
         path: RoutePath.virtualTable,
         element: <VirtualTable />,
         title: 'Virtual table',
+    },
+    [AppRoutes.GOD_TABLE]: {
+        path: RoutePath.godTable,
+        element: <GodObject />,
+        title: 'God Table',
     },
 
     // last

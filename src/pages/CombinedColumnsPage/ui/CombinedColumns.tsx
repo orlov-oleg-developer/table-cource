@@ -33,7 +33,7 @@ export function CombinedColumns() {
               <td>Джинсы</td>
               <td>6</td>
               <td>☐</td>
-              <td>☐</td>
+              <td>☑</td>
             </tr>
           </tbody>
           <tfoot>
@@ -56,6 +56,7 @@ export function CombinedColumns() {
             <tr>
               <th rowSpan={2}>№</th>
               <th rowSpan={2}>Наименование</th>
+              <th rowSpan={2}>Цвет</th>
               <th rowSpan={2}>Количество</th>
               <th colSpan={2}>Место выдачи</th>
             </tr>
@@ -66,6 +67,7 @@ export function CombinedColumns() {
           </thead>
           <tbody>
             <tr>
+              <td rowSpan={2}>1</td>
               <td rowSpan={2}>Свитер</td>
               <td>белый</td>
               <td>2</td>
@@ -80,6 +82,7 @@ export function CombinedColumns() {
             </tr>
 
             <tr>
+              <td rowSpan={2}>2</td>
               <td rowSpan={2}>Джинсы</td>
               <td>белые</td>
               <td>6</td>
@@ -95,7 +98,7 @@ export function CombinedColumns() {
           </tbody>
           <tfoot>
             <tr>
-              <th colSpan={2}>Всего</th>
+              <th colSpan={3}>Всего</th>
               <th>8</th>
               <th colSpan={2}>-</th>
             </tr>

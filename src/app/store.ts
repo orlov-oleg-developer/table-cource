@@ -5,6 +5,7 @@ import { MappedTableSchema, mappedReducer } from '../pages/MappedData/model/slic
 import { FullValidationSchemeSchema, fullValidationReducer } from '../pages/FullValidation/model/slices/fullValidationSlice';
 import { ObjectValidationSchemeSchema, objectValidationReducer } from '../pages/ObjectValidation/model/slices/objectValidationSlice';
 import { virtualTableReducer, virtualTableSchemeSchema } from '../pages/VitrualTable/model/slices/virtualTableSlice';
+import { godObjectSliceReducer, GodObjectSchema } from '../pages/GodObject/model/slices/godObjectSlice';
 
 export type StateSchema = {
   defaultSliceReducer: TableSchema;
@@ -12,6 +13,7 @@ export type StateSchema = {
   fullValidationReducer: FullValidationSchemeSchema;
   objectValidationReducer: ObjectValidationSchemeSchema;
   virtualTableReducer: virtualTableSchemeSchema;
+  godObjectSliceReducer: GodObjectSchema;
 }
 
 export const store = configureStore({
@@ -21,6 +23,7 @@ export const store = configureStore({
     fullValidationReducer,
     objectValidationReducer,
     virtualTableReducer,
+    godObjectSliceReducer,
   }
 })
 
