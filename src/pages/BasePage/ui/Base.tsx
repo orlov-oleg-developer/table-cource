@@ -1,44 +1,36 @@
 import { HStack } from '../../../shared/ui/Stack'
-import './Base.css'
+import style from '../../../shared/styles/TableStyles.module.scss'
 
 export function Base() {
   return (
     <>
-      <h1>Таблица</h1>
+      <h1>Базовая вёрстка</h1>
 
       <HStack justify='center'>
-        <table className='table'>
+        <table className={style.table}>
           <thead>
             <tr>
               <th>№</th>
-              <th>Наименование</th>
-              <th>Количество</th>
-              <th>В наличии</th>
+              <th>Язык программирования</th>
+              <th>Автор</th>
+              <th>Год создания</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>1</td>
-              <td>Свитер</td>
-              <td>2</td>
-              <td>☑</td>
+              <td>Java</td>
+              <td>James Arthur Gosling</td>
+              <td>1995</td>
             </tr>
             <tr>
               <td>2</td>
-              <td>Джинсы</td>
-              <td>6</td>
-              <td>☐</td>
+              <td>JavaScript</td>
+              <td>Brendan Eich</td>
+              <td>1995</td>
             </tr>
           </tbody>
-          <tfoot>
-            <tr>
-              <th></th>
-              <th>Всего</th>
-              <th>8</th>
-              <th>-</th>
-            </tr>
-          </tfoot>
-          <caption>*Количество товара в таблице может не совпадать с тем, что есть на складе</caption>
+          <caption>*Более подробную информацию вы можете найти в интернете</caption>
         </table>
       </HStack>
     </>

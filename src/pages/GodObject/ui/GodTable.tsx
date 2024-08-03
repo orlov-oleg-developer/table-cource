@@ -1,20 +1,24 @@
-import { useCallback, useState } from "react";
-import { NumberInput } from "../../../shared/ui/Inputs/NumberInput";
-import { StringInput } from "../../../shared/ui/Inputs/StringInput";
+import { memo, useCallback, useState } from "react";
 import { SortType, TableHeader } from "../model/godTableTypes";
-import { ValidationObject } from "../model/objectValidationType";
 import { nextSortType } from "../model/constants";
+import './GodTable.css'
+import { ActionButton } from "./ActionButton";
+import { TableCell } from "./TableCell";
 
 type GodTableProps<RowType> = {
   header: TableHeader<RowType>;
   data: (RowType & { id: string })[];
-  onBlur: (args: { index: number, key: keyof RowType, value: unknown }) => void;
+  onBlur: (args: { id: string, key: keyof RowType, value: unknown }) => void;
+  onAdd?: (id: string) => void;
+  onDelete?: (id: string) => void;
 }
 
-export const GodTable = <RowType,>({
+export const GodTable = memo(<RowType,>({
   header,
   data,
   onBlur,
+  onAdd,
+  onDelete,
 }: GodTableProps<RowType>) => {
 
   const [sortTypes, setSortTypes] = useState<Record<keyof RowType, SortType>>(
@@ -34,44 +38,43 @@ export const GodTable = <RowType,>({
       <thead>
         <tr>
           {header.map((headCell) => (
-            <th key={headCell.key.toString()} onClick={() => onSortCb(headCell.key, headCell.onSort)}>{headCell.title}</th>
+            <th
+              key={headCell.key.toString()}
+              onClick={() => onSortCb(headCell.key, headCell.onSort)}
+              className={headCell.onSort ? 'clickable' : ''}
+            >
+              {`${headCell.title} ${headCell.onSort ? '˅' : ''}`}
+            </th>
           ))}
+          {onAdd && <th></th>}
+          {onDelete && <th></th>}
         </tr>
       </thead>
       <tbody>
-        {data.map((row, rowIndex) => (
+        {data.map((row) => (
           <tr key={row.id}>
-            {header.map((cell) => (
-              <td key={`${row.id}_${cell.key.toString()}`}>
-                {cell.kind === 'string' && (
-                  <StringInput
-                    value={(row[cell.key] as ValidationObject<string>).value}
-                    onBlur={(e) => onBlur({ index: rowIndex, key: cell.key, value: e.currentTarget.value })}
-                    error={(row[cell.key] as ValidationObject<string>).errorText}
-                  />
-                )}
-                {cell.kind === 'number' && (
-                  <NumberInput
-                    value={(row[cell.key] as ValidationObject<number>).value}
-                    onBlur={(e) => onBlur({ index: rowIndex, key: cell.key, value: +e.currentTarget.value })}
-                    error={(row[cell.key] as ValidationObject<string>).errorText}
-                  />
-                )}
-                {cell.kind === 'select' && (
-                  <select
-                    value={(row[cell.key] as ValidationObject<string>).value}
-                    onChange={(e) => onBlur({ index: rowIndex, key: cell.key, value: e.currentTarget.value })}
-                  >
-                    {cell.options?.map((option) => (
-                      <option key={option.value} value={option.value}>{option.name}</option>
-                    ))}
-                  </select>
-                )}
-              </td>
+            {header.map((cellInfo) => (
+              <TableCell
+                key={`${row.id}_${cellInfo.key.toString()}`}
+                id={row.id}
+                cellInfo={cellInfo}
+                state={row[cellInfo.key]}
+                onBlur={onBlur}
+              />
             ))}
+            {onAdd && (
+              <td>
+                <ActionButton type='add' id={row.id} cb={onAdd} />
+              </td>
+            )}
+            {onDelete && (
+              <td>
+                <ActionButton type='delete' id={row.id} cb={onDelete} />
+              </td>
+            )}
           </tr>
         ))}
       </tbody>
     </table>
   )
-};
+});

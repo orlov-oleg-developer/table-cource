@@ -1,64 +1,49 @@
 import { HStack } from '../../../shared/ui/Stack'
-import './ScrollTable.css'
+import style from '../../../shared/styles/TableStyles.module.scss'
+import currentStyle from './ScrollTable.module.scss'
+
+type TableData = {
+  language: string;
+  author: string;
+  releaseDate: string;
+}
 
 export function ScrollTable() {
-
-  const tableData = [
+  const tableData: TableData[] = [
     {
-      number: 1,
-      name: 'Denis',
-      age: 24,
-      town: 'Москва',
-      hobby: 'Программирование',
+      language: 'C++',
+      author: 'Bjarne Stroustrup',
+      releaseDate: '1983',
     },
     {
-      number: 2,
-      name: 'Andrey',
-      age: 26,
-      town: 'Екатеринбург',
-      hobby: 'Программирование',
+      language: 'Haskell',
+      author: '-',
+      releaseDate: '1990',
     },
     {
-      number: 3,
-      name: 'Igor',
-      age: 23,
-      town: 'Казань',
-      hobby: 'Программирование',
+      language: 'Python',
+      author: 'Guido van Rossum',
+      releaseDate: '20.02.1991',
     },
     {
-      number: 4,
-      name: 'Oleg',
-      age: 27,
-      town: 'Краснодар',
-      hobby: 'Программирование',
+      language: 'Java',
+      author: 'James Arthur Gosling',
+      releaseDate: '23.05.1995',
     },
     {
-      number: 5,
-      name: 'Denis',
-      age: 24,
-      town: 'Москва',
-      hobby: 'Программирование',
+      language: 'PHP',
+      author: 'Rasmus Lerdorf',
+      releaseDate: '8.06.1995',
     },
     {
-      number: 6,
-      name: 'Andrey',
-      age: 26,
-      town: 'Екатеринбург',
-      hobby: 'Программирование',
+      language: 'JavaScript',
+      author: 'Brendan Eich',
+      releaseDate: '4.12.1995',
     },
     {
-      number: 7,
-      name: 'Igor',
-      age: 23,
-      town: 'Казань',
-      hobby: 'Программирование',
-    },
-    {
-      number: 8,
-      name: 'Oleg',
-      age: 27,
-      town: 'Краснодар',
-      hobby: 'Программирование',
+      language: 'C#',
+      author: 'Anders Hejlsberg',
+      releaseDate: '2001',
     },
   ]
 
@@ -66,23 +51,23 @@ export function ScrollTable() {
     <>
       <h1>Скролл</h1>
 
-      <HStack justify='center' className='tableContainer'>
-        <table className='table'>
+      <HStack justify='center' className={currentStyle.tableContainer}>
+        <table className={style.table}>
           <thead>
             <tr>
               <th>№</th>
-              <th>Возраст</th>
-              <th>Город</th>
-              <th>Хобби</th>
+              <th>Язык программирования</th>
+              <th>Автор</th>
+              <th>Год создания</th>
             </tr>
           </thead>
           <tbody>
-            {tableData.map((data) => (
+            {tableData.map((data, i) => (
               <tr>
-                <td>{data.number}</td>
-                <td>{data.age}</td>
-                <td>{data.town}</td>
-                <td>{data.hobby}</td>
+                <td>{i + 1}</td>
+                <td>{data.language}</td>
+                <td>{data.author}</td>
+                <td>{data.releaseDate}</td>
               </tr>
             ))}
           </tbody>

@@ -1,5 +1,5 @@
 import { HStack } from '../../../shared/ui/Stack'
-import './CombinedColumns.css'
+import style from '../../../shared/styles/TableStyles.module.scss'
 
 export function CombinedColumns() {
   return (
@@ -7,43 +7,36 @@ export function CombinedColumns() {
       <h1>Таблица</h1>
 
       <HStack justify='center'>
-        <table className='table'>
+        <table className={style.table}>
           <thead>
             <tr>
               <th rowSpan={2}>№</th>
-              <th rowSpan={2}>Наименование</th>
-              <th rowSpan={2}>Количество</th>
-              <th colSpan={2}>Место выдачи</th>
+              <th rowSpan={2}>Язык программирования</th>
+              <th rowSpan={2}>Автор</th>
+              <th colSpan={2} style={{ textAlign: 'center' }}>Релизы</th>
             </tr>
             <tr>
-              <th>Москва</th>
-              <th>Саратов</th>
+              <th>Первый</th>
+              <th>Последний</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>1</td>
-              <td>Свитер</td>
-              <td>2</td>
-              <td>☑</td>
-              <td>☐</td>
+              <td>Java</td>
+              <td>James Arthur Gosling</td>
+              <td>23.05.1995</td>
+              <td>19.03.2024</td>
             </tr>
             <tr>
               <td>2</td>
-              <td>Джинсы</td>
-              <td>6</td>
-              <td>☐</td>
-              <td>☑</td>
+              <td>JavaScript</td>
+              <td>Brendan Eich</td>
+              <td>4.12.1995</td>
+              <td>27.03.2024</td>
             </tr>
           </tbody>
-          <tfoot>
-            <tr>
-              <th colSpan={2}>Всего</th>
-              <th>8</th>
-              <th colSpan={2}>-</th>
-            </tr>
-          </tfoot>
-          <caption>*Количество товара в таблице может не совпадать с тем, что есть на складе</caption>
+          <caption>*Более подробную информацию вы можете найти в интернете</caption>
         </table>
       </HStack>
 
@@ -51,59 +44,51 @@ export function CombinedColumns() {
       <br />
 
       <HStack justify='center'>
-        <table className='table'>
+        <table className={style.table}>
           <thead>
             <tr>
               <th rowSpan={2}>№</th>
-              <th rowSpan={2}>Наименование</th>
-              <th rowSpan={2}>Цвет</th>
-              <th rowSpan={2}>Количество</th>
-              <th colSpan={2}>Место выдачи</th>
+              <th rowSpan={2}>Типизация</th>
+              <th rowSpan={2}>Язык программирования</th>
+              <th rowSpan={2}>Автор</th>
+              <th colSpan={2} style={{ textAlign: 'center' }}>Релизы</th>
             </tr>
             <tr>
-              <th>Москва</th>
-              <th>Саратов</th>
+              <th>Первый</th>
+              <th>Последний</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td rowSpan={2}>1</td>
-              <td rowSpan={2}>Свитер</td>
-              <td>белый</td>
-              <td>2</td>
-              <td>☑</td>
-              <td>☐</td>
+              <td rowSpan={2}>Статическая</td>
+              <td>Java</td>
+              <td>James Arthur Gosling</td>
+              <td>23.05.1995</td>
+              <td>19.03.2024</td>
             </tr>
             <tr>
-              <td>черный</td>
-              <td>1</td>
-              <td>☑</td>
-              <td>☐</td>
+              <td>C#</td>
+              <td>Anders Hejlsberg</td>
+              <td>2001</td>
+              <td>14.11.2023</td>
             </tr>
-
             <tr>
               <td rowSpan={2}>2</td>
-              <td rowSpan={2}>Джинсы</td>
-              <td>белые</td>
-              <td>6</td>
-              <td>☐</td>
-              <td>☑</td>
+              <td rowSpan={2}>Динамическая</td>
+              <td>JavaScript</td>
+              <td>Brendan Eich</td>
+              <td>4.12.1995</td>
+              <td>27.03.2024</td>
             </tr>
             <tr>
-              <td>черные</td>
-              <td>6</td>
-              <td>☑</td>
-              <td>☐</td>
+              <td>Python</td>
+              <td>Guido van Rossum</td>
+              <td>20.02.1991</td>
+              <td>6.06.2024</td>
             </tr>
           </tbody>
-          <tfoot>
-            <tr>
-              <th colSpan={3}>Всего</th>
-              <th>8</th>
-              <th colSpan={2}>-</th>
-            </tr>
-          </tfoot>
-          <caption>*Количество товара в таблице может не совпадать с тем, что есть на складе</caption>
+          <caption>*Более подробную информацию вы можете найти в интернете</caption>
         </table>
       </HStack>
     </>

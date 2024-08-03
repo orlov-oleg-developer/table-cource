@@ -4,7 +4,6 @@ import { v1 } from 'uuid';
 import { Hobby, RowData, Town } from '../objectValidationType';
 import { getValidationObject } from '../utils/getValidationObject';
 import { getDefaultRow } from '../utils/getDefaultRow';
-import { SortType } from '../godTableTypes';
 
 export type GodObjectSchema = {
   table: RowData[] | null;
@@ -24,9 +23,10 @@ const godObjectSlice = createSlice({
   name: 'godObject',
   initialState,
   reducers: {
-    changeValue: (state, action: PayloadAction<{ index: number, key: keyof RowData, value: unknown }>) => {
-      const { index, key, value } = action.payload;
+    changeValue: (state, action: PayloadAction<{ id: string, key: keyof RowData, value: unknown }>) => {
+      const { id, key, value } = action.payload;
       if (!state.table) return;
+      const index = [...state.table].findIndex((row) => row.id === id);
       if (key === 'age' && typeof value === 'number') {
         state.table[index].age.value = value;
         if (value < 18) {
@@ -47,9 +47,9 @@ const godObjectSlice = createSlice({
         state.table[index].hobby.value = value as Hobby;
       }
     },
-    addRow: (state, action: PayloadAction<number>) => {
-      const index = action.payload;
+    addRow: (state, { payload }: PayloadAction<string>) => {
       if (state.table) {
+        const index = [...state.table]?.findIndex((row) => row.id === payload) || 0;
         const row = getDefaultRow();
         row.age.errorText = 'Возраст должен быть выше 18 лет';
         state.table.splice(index + 1, 0, row)
@@ -61,18 +61,6 @@ const godObjectSlice = createSlice({
         state.table = state.table.filter((row) => row.id !== id)
       }
     },
-    sortTable: (state, action: PayloadAction<{ key: keyof RowData; sortType: SortType }>) => {
-      const { key, sortType } = action.payload;
-      if (state.table) {
-        state.table = state.table.sort((a, b) => {
-          if (sortType === 'up') {
-            return a[key].value - b[key].value
-          } else {
-            return b[key].value - a[key].value
-          }
-        })
-      }
-    }
   }
 })
 

@@ -1,11 +1,11 @@
-export type SortType = 'up' | 'down' | 'default'
+export type SortType = 'asc' | 'desc' | 'default'
 
-export type TableHeader<RowType> = {
+export type TableHeaderCell<RowType> = {
   key: keyof RowType,
   kind: 'string' | 'number' | 'select',
   title: string,
   options?: { value: string, name: string, disabled?: boolean }[],
   onSort?: (type: SortType) => void;
-  onFilter?: () => void;
-}[]
+}
 
+export type TableHeader<RowType> = TableHeaderCell<RowType>[]

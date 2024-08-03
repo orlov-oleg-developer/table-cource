@@ -1,0 +1,11 @@
+.tableContainer {
+  display: flex;
+  align-items: flex-start;
+  overflow-y: auto;
+  height: 206px;
+  position: relative;
+
+  table {
+    width: 100%;
+  }
+}

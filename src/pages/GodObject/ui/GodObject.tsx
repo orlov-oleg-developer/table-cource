@@ -1,10 +1,9 @@
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "../../../app/store";
-import { TableHeader } from "../model/godTableTypes"
+import { SortType, TableHeader } from "../model/godTableTypes"
 import { RowData } from "../model/objectValidationType"
 import { GodTable } from "./GodTable"
 import { getTableData } from "../model/selectors/getTableData";
-import './ObjectValidation.css'
 import { HStack } from "../../../shared/ui/Stack";
 import { useCallback } from "react";
 import { hobbies, towns } from "../../VitrualTable/model/tableData";
@@ -19,16 +18,16 @@ export const GodObject = () => {
       key: 'name',
       kind: 'string',
       title: 'Имя',
-      onSort: (type: 'up' | 'down' | 'default') => {
-        dispatch(godObjectSliceActions.sortTable({ key: 'name', sortType: type }))
+      onSort: (type: SortType) => {
+        console.log(type)
       },
     },
     {
       key: 'age',
       kind: 'number',
       title: 'Возраст',
-      onSort: (type: 'up' | 'down' | 'default') => {
-        dispatch(godObjectSliceActions.sortTable({ key: 'age', sortType: type }))
+      onSort: (type: SortType) => {
+        console.log(type)
       },
     },
     {
@@ -53,8 +52,16 @@ export const GodObject = () => {
     },
   ]
 
-  const onBlur = useCallback((args: { index: number, key: keyof RowData, value: unknown }) => {
+  const onBlur = useCallback((args: { id: string, key: keyof RowData, value: unknown }) => {
     dispatch(godObjectSliceActions.changeValue(args))
+  }, [dispatch])
+
+  const onAdd = useCallback((id: string) => {
+    dispatch(godObjectSliceActions.addRow(id))
+  }, [dispatch])
+
+  const onDelete = useCallback((id: string) => {
+    dispatch(godObjectSliceActions.deleteRow(id))
   }, [dispatch])
 
   return (
@@ -62,7 +69,13 @@ export const GodObject = () => {
       <h1>God Table</h1>
 
       <HStack justify='center'>
-        <GodTable header={tableHeader} data={tableData} onBlur={onBlur} />
+        <GodTable
+          header={tableHeader}
+          data={tableData}
+          onBlur={onBlur}
+          onAdd={onAdd}
+          onDelete={onDelete}
+        />
       </HStack>
     </>
   )

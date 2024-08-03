@@ -1,32 +1,34 @@
 import { HStack } from '../../../shared/ui/Stack'
-import './HorizontalTable.css'
+import style from '../../../shared/styles/TableStyles.module.scss'
+
+type TableData = {
+  language: string;
+  author: string;
+  releaseDate: string;
+}
 
 export function HorizontalTable() {
 
-  const tableData = [
+  const tableData: TableData[] = [
     {
-      name: 'Denis',
-      age: 24,
-      town: 'Москва',
-      hobby: 'Программирование',
+      language: 'Python',
+      author: 'Guido van Rossum',
+      releaseDate: '20.02.1991',
     },
     {
-      name: 'Andrey',
-      age: 26,
-      town: 'Екатеринбург',
-      hobby: 'Программирование',
+      language: 'Java',
+      author: 'James Arthur Gosling',
+      releaseDate: '23.05.1995',
     },
     {
-      name: 'Igor',
-      age: 23,
-      town: 'Казань',
-      hobby: 'Программирование',
+      language: 'JavaScript',
+      author: 'Brendan Eich',
+      releaseDate: '4.12.1995',
     },
     {
-      name: 'Oleg',
-      age: 27,
-      town: 'Краснодар',
-      hobby: 'Программирование',
+      language: 'C#',
+      author: 'Anders Hejlsberg',
+      releaseDate: '2001',
     },
   ]
 
@@ -35,32 +37,32 @@ export function HorizontalTable() {
       <h1>Горизонтальная таблица</h1>
 
       <HStack justify='center'>
-        <table className='table'>
+        <table className={style.table}>
           <thead>
             <tr>
               <th></th>
-              {tableData.map((data) => (
-                <th>{data.name}</th>
+              {tableData.map((_, i) => (
+                <th>{i + 1}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td style={{ backgroundColor: 'white', color: 'black' }}>Возраст</td>
+              <td className={style.boldText}>Язык программирования</td>
               {tableData.map((data) => (
-                <td>{data.age}</td>
+                <td>{data.language}</td>
               ))}
             </tr>
             <tr>
-              <td style={{ backgroundColor: 'white', color: 'black' }}>Город</td>
+              <td className={style.boldText}>Автор</td>
               {tableData.map((data) => (
-                <td>{data.town}</td>
+                <td>{data.author}</td>
               ))}
             </tr>
             <tr>
-              <td style={{ backgroundColor: 'white', color: 'black' }}>Хобби</td>
+              <td className={style.boldText}>Релиз</td>
               {tableData.map((data) => (
-                <td>{data.hobby}</td>
+                <td>{data.releaseDate}</td>
               ))}
             </tr>
           </tbody>
