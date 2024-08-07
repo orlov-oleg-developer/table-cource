@@ -8,4 +8,4 @@ export type TableHeaderCell<RowType> = {
   onSort?: (type: SortType) => void;
 }
 
-export type TableHeader<RowType> = TableHeaderCell<RowType>[]
+export type TableHeader<T> = TableHeaderCell<T>[]

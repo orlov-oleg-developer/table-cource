@@ -13,19 +13,19 @@ type GodTableProps<RowType> = {
   onDelete?: (id: string) => void;
 }
 
-export const GodTable = memo(<RowType,>({
+export const GodTable = memo(<T,>({
   header,
   data,
   onBlur,
   onAdd,
   onDelete,
-}: GodTableProps<RowType>) => {
+}: GodTableProps<T>) => {
 
-  const [sortTypes, setSortTypes] = useState<Record<keyof RowType, SortType>>(
-    header.reduce((acc, headCell) => ({ ...acc, [headCell.key]: 'default' }), {}) as Record<keyof RowType, SortType>
+  const [sortTypes, setSortTypes] = useState<Record<keyof T, SortType>>(
+    header.reduce((acc, headCell) => ({ ...acc, [headCell.key]: 'default' }), {}) as Record<keyof T, SortType>
   );
 
-  const onSortCb = useCallback((key: keyof RowType, cb?: (type: SortType) => void) => {
+  const onSortCb = useCallback((key: keyof T, cb?: (type: SortType) => void) => {
     if (cb) {
       const newType = nextSortType[sortTypes[key]];
       cb(newType);

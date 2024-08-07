@@ -11,12 +11,13 @@ type TableCellProps<RowType> = {
   onBlur: (args: { id: string; key: keyof RowType; value: string | number }) => void;
 }
 
-export const TableCell = memo(<RowType,>({
+export const TableCell = memo(<T,>({
   id,
   cellInfo,
   state,
   onBlur,
-}: TableCellProps<RowType>) => {
+}: TableCellProps<T>) => {
+  console.log(`${id}_cell`)
   const onStringBlur = useCallback((e: React.FocusEvent<HTMLInputElement, Element>) => {
     onBlur({ id, key: cellInfo.key, value: e.currentTarget.value })
   }, [onBlur, id, cellInfo.key])
